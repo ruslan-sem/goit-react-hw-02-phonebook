@@ -48,6 +48,12 @@ export class App extends Component {
       item.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
 
+  deleteContact = event => {
+    this.setState({
+      contacts: this.state.contacts.filter(item => item.id !== event.target.id),
+    });
+  };
+
   render() {
     return (
       <div
@@ -65,7 +71,10 @@ export class App extends Component {
         <ContactForm onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleChange} />
-        <ContactList contacts={this.filteredContacts} />
+        <ContactList
+          contacts={this.filteredContacts}
+          deleteContact={this.deleteContact}
+        />
       </div>
     );
   }
