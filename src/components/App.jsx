@@ -63,13 +63,27 @@ export class App extends Component {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
+          fontSize: 20,
           color: '#010101',
         }}
       >
-        <h1>Phonebook</h1>
+        <h1
+          style={{
+            margin: 0,
+            fontSize: 32,
+          }}
+        >
+          Phonebook
+        </h1>
         <ContactForm onSubmit={this.handleSubmit} />
-        <h2>Contacts</h2>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: 24,
+          }}
+        >
+          Contacts
+        </h2>
         <Filter onChange={this.handleChange} />
         <ContactList
           contacts={this.filteredContacts}

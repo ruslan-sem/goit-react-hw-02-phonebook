@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const ContactListItem = ({ id, name, number, deleteContact }) => {
   return (
     <li>
-      {name}: {number}
+      {name}: {number}{' '}
       <button type="button" id={id} onClick={deleteContact}>
         Delete
       </button>
