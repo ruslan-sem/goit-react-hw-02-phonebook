@@ -22,8 +22,12 @@ export class App extends Component {
 
   handleSubmit = event => {
     const { name, number } = event.target.elements;
-
     event.preventDefault();
+    if (this.state.contacts.find(item => item.name === name.value)) {
+      alert(`${name.value} is already in contacts.`);
+      event.target.reset();
+      return;
+    }
     this.setState(
       prevState => ({
         contacts: [
