@@ -21,26 +21,22 @@ export class App extends Component {
   };
 
   handleSubmit = event => {
-    const { name, number } = event.target.elements;
-    event.preventDefault();
-    if (this.state.contacts.find(item => item.name === name.value)) {
-      alert(`${name.value} is already in contacts.`);
-      event.target.reset();
+    const name = event.target.elements.name.value;
+    const number = event.target.elements.number.value;
+    if (this.state.contacts.find(item => item.name === name)) {
+      alert(`${name} is already in contacts.`);
       return;
     }
-    this.setState(
-      prevState => ({
-        contacts: [
-          ...prevState.contacts,
-          {
-            id: nanoid(),
-            name: name.value,
-            number: number.value,
-          },
-        ],
-      }),
-      () => event.target.reset()
-    );
+    this.setState(prevState => ({
+      contacts: [
+        ...prevState.contacts,
+        {
+          id: nanoid(),
+          name,
+          number,
+        },
+      ],
+    }));
   };
 
   filteredContacts = () =>

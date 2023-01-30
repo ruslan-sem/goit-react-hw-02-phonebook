@@ -2,8 +2,14 @@ import PropTypes from 'prop-types';
 import { Form, Label } from './ContactForm.styled';
 
 export const ContactForm = ({ onSubmit }) => {
+  const handleSubmin = event => {
+    event.preventDefault();
+    onSubmit(event);
+    event.target.reset();
+  };
+
   return (
-    <Form onSubmit={onSubmit} autoComplete="off">
+    <Form onSubmit={handleSubmin} autoComplete="off">
       <Label>Name</Label>
       <input
         type="text"
